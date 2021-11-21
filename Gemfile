@@ -3,9 +3,16 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.5'
 
-# Application gems
-
+# Safer download of binary files. Read more: https://www.twilio.com/blog/download-image-files-ruby
+gem 'down', '~> 2.4.0'
+# Extract a wider variety of archives. Read more: https://www.rubydoc.info/gems/extracter/1.2.8
+gem 'extracter', '~> 1.2.0'
+# Use the command pattern for services. Read more: https://github.com/iHiD/mandate
+gem 'mandate', '~> 1.0.0'
+# Use MongoDB with rails. Read more: https://github.com/mongodb/mongoid
 gem 'mongoid', '~> 7.3.0'
+# Parse Japanese phrases and sentences. Read more: https://github.com/Kimtaro/ve
+gem 've', '~> 0.0.0', '>= 0.0.4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
@@ -25,8 +32,12 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  # Debugging with Pry
+  gem 'pry', '~> 0.14.0' # Must be manually required in spec_helper.rb to work in RSpec
+  gem 'pry-nav', '~> 1.0.0' # See: https://stackoverflow.com/questions/20404267/cant-escape-from-eval-with-next-using-pry-rails
+  gem 'pry-rails', '~> 0.3.0', '>= 0.3.9'
+  # Use RSPpec
+  gem 'rspec-rails', '~> 5.0.0'
 end
 
 group :development do
